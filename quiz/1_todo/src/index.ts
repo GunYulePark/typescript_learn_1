@@ -19,15 +19,23 @@ function fetchTodos() {
 function addTodo(todo) {
   todoItems.push(todo);
 }
+// push : 배열 마지막에 추가
 
 function deleteTodo(index) {
   todoItems.splice(index, 1);
 }
+/* 배열 임의의 위치에 요소 추가 제거 */
+// start - 수정할 배열 요소의 인덱스
+// deleteCount - 삭제할 요소 개수, 제거하지 않을 경우 0
+// el - 배열에 추가될 요소
+// arr.splice(start, deleteCount, el1, el2, ... );
 
 function completeTodo(index, todo) {
   todo.done = true;
   todoItems.splice(index, 1, todo);
 }
+// 마지막에 todo는 왜 들어가는거지?
+
 
 // business logic
 function logFirstTodo() {
