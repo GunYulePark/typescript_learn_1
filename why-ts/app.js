@@ -30,9 +30,9 @@ function fetchUser(){
 }
 console.log(fetchUser());
 
-fetchUser().then(function(response){
-  response.address.
-})
+fetchUser().then(function(response) {
+  response.address;
+});
 
 
 // axios API 활용방법 잘 모르겠으면 아래 참고
