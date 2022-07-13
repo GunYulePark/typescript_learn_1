@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "allowJs": true, // js로도 허용
+    "checkJs": true, //@ts-check와 같은 역할
+    "noImplicitAny": true, // default값 any라도 주지 않는다.
+    "skipLibCheck": true,
+  }
+  // tsc로 compile하면 위의 옵션들이 적용된다.
+}
+// 더 많은 옵션은 아래 참고
+// https://www.typescriptlang.org/tsconfig
