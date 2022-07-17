@@ -54,4 +54,54 @@
   str.split(''); // 그래서 string이 아니라, split() 적용가능한지 인식 불가.
   const login = logText<boolean>(true);
   
-// 제네릭 실전 예제
+// interface에 generic 정의하기
+  // interface Dropdown{
+  //   value: string;
+  //   selected: boolean;
+  // }
+
+  // export const obj: Dropdown = {value: 'abc', selected: false};
+
+  interface Dropdown<T> {
+    value: T;
+    selected: boolean;
+  }
+  export const obj: Dropdown<number> = {value: 12, selected: false};
+
+  function logTextLength1<T>(text: T[]): T[] {
+    // console.log(text.length); // T[]이기 때문에 length가 된다.
+    text.forEach(function (t){
+      console.log(t);
+    });
+    return text;
+  }
+
+  logTextLength1<string>(['hio', 'abc']);
+
+// 제네릭 타입 제한 2 - 정의된 타입 이용하기
+  interface LengthType {
+    length: number;
+  }
+  function logTextLength2<T extends LengthType>(text: T): T {
+    text.length;
+    return text;
+  }
+
+  logTextLength2('a');
+  // logTextLength2(10); //number엔 length 없기 때문에 상위 method인 LengthType을 부여할 수 없다.
+  // <T extends {Type}>은 T 자리에 {Type}이 가진 속성을 모두 가질 수밖에 없도록 '타입을 제한'하는 것이다.
+  logTextLength2({ length: 10 });
+
+// 제네릭 타입 제한 3 - keyof
+  interface ShoppingItem {
+    name: string;
+    price: number;
+    stock: number;
+  }
+
+  // keyof를 통해서 속성 3개 중 하나만 갖도록 제한한다.
+  function getShoppingItemOption<T extends keyof ShoppingItem>(itemOption: T): T{
+    return itemOption;
+  }
+
+  getShoppingItemOption('name');
