@@ -1,15 +1,5 @@
-interface PhoneNumberDictionary {
-  [phone: string]: {
-    // 이 부분이 home:, office: 등으로 변주
-    num: number;
-  };
-}
+import { Contact, PhoneType } from './types';
 
-interface Contact {
-  name: string;
-  address: string;
-  phones: PhoneNumberDictionary;
-}
 // api
 // TODO: 아래 함수의 반환 타입을 지정해보세요.
 // me) Constact[]로 해놔도 home, office같은 속성은 추가할 수 있다.
@@ -82,7 +72,7 @@ class AddressBook {
     return this.contacts.filter(contact => contact.address === address);
   }
 
-  findContactByPhone(phoneNumber: number, phoneType: string): Contact[] {
+  findContactByPhone(phoneNumber: number, phoneType: PhoneType): Contact[] {
     return this.contacts.filter(
       contact => contact.phones[phoneType].num === phoneNumber
     );
@@ -95,6 +85,7 @@ class AddressBook {
   displayListByName(): string[] {
     return this.contacts.map(contact => contact.name);
   }
+  // map: name만 뽑아서 새로운 배열을 만들어준다.
 
   displayListByAddress(): string[] {
     return this.contacts.map(contact => contact.address);
@@ -102,4 +93,6 @@ class AddressBook {
   /* ------------------------------------------------ */
 }
 
-new AddressBook();
+const address = new AddressBook();
+let hello1: Contact[] = address.findContactByPhone(314882045, PhoneType.Studio);
+console.log(hello1);
