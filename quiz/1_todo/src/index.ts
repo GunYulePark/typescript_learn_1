@@ -41,7 +41,7 @@ function deleteTodo(index: number): void {
 }
 /* 배열 임의의 위치에 요소 추가 제거 */
 // start - 수정할 배열 요소의 인덱스
-// deleteCount - 삭제할 요소 개수, 제거하지 않을 경우 0
+// deleteCount - 삭제할 요소 개수, 제거하지 않을 경우엔 0
 // el - 배열에 추가될 요소
 // arr.splice(start, deleteCount, el1, el2, ... );
 
